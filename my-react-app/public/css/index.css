@@ -1,0 +1,200 @@
+/* ------------------ BASICS ------------------ */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates&family=Sacramento&family=Sanchez&display=swap");
+
+/* COLOR VARIABLES */
+:root {
+  --green-primary: #66bb6a;
+  --green-secondary: #008667;
+  --green-hero: #003828;
+
+  --bg-color: #fffff8;
+  /* --bg-color: linear-gradient(140deg,rgba(255, 255, 255, 1) 0%, rgba(237, 255, 238, 1) 46%, rgba(112, 255, 215, 1) 100%); */
+  --card-bg: #ffffff;
+  --text-color: #ffffe6;
+  --text-secondary: #555555;
+  --border-color: #979797;
+  --card-border-color: #008667;
+
+  --success-color: #388e3c;
+  --error-color: #d32f2f;
+
+  --l-r-bg-color: #008667;
+  --nav-color: #ffffe6;
+  --nav-color-hover: #82ffee;
+
+  --service-card-bg: #d1f2eb;
+  --LABEL_COLOR: #154360;
+  --BTN_COLOR: #048a4b;
+  --BTN_HOVER: #025829;
+  --WARNING_BTN_COLOR: #ffc107;
+  --WARNING_BTN_HOVER: #d49f00;
+  --DANGER_BTN_COLOR: #dc3545;
+  --DANGER_BTN_HOVER: #bb0f20;
+  --INFO_BTN_COLOR: #03b7db;
+  --INFO_BTN_HOVER: #0286a0;
+
+  --footer-bg-color: #212529;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  scrollbar-width: 0;
+  background: linear-gradient(135deg, #ffffff, #d2e9ff);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+h1 {
+  font-family: "Sacramento", cursive;
+}
+
+h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+p,
+span,
+label,
+input,
+textarea,
+a {
+  font-family: "Sanchez", serif;
+}
+
+main,
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main{
+  min-height: calc(100vh - 72px - 193px);
+  padding: 20px;
+}
+
+section {
+  width: 80vw;
+}
+
+
+/* ------------------ HOME ------------------ */
+
+.home .carousel-inner {
+  margin: auto;
+  width: 80%;
+  border-radius: 20px;
+}
+
+
+.card{
+  transition: all 0.3s ease-in-out;
+}
+.card:hover{
+  box-shadow: 0px 0px 10px 1px #000;
+}
+
+.card .card-img img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+
+/* ------------------ CARD ------------------ */
+
+.card{
+  width: 18rem;
+}
+
+/* ------------------ PROFILE ------------------ */
+
+.enrolled-courses h3 {
+  letter-spacing: 0.5px;
+}
+
+.rounded-circle {
+  border: 4px solid #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+/* ------------------ LOADER ------------------ */
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8fafc;
+}
+
+.loader-text {
+  color: #0d6efd;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.book {
+  position: relative;
+  width: 50px;
+  height: 35px;
+  perspective: 600px;
+}
+
+.book__page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0d6efd;
+  transform-origin: left;
+  animation: flip 1.6s infinite ease-in-out;
+}
+
+.book__page:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #3399ff;
+}
+.book__page:nth-child(3) {
+  animation-delay: 0.4s;
+  background: #66b3ff;
+}
+
+@keyframes flip {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(-180deg); }
+  100% { transform: rotateY(-180deg); }
+}
+
+
+/* ------------------ LOADER ------------------ */
