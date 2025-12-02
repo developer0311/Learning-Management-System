@@ -1,16 +1,19 @@
+// NavItem.jsx
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function NavItem(props) {
+function NavItem({ to, nav, icon }) {
   return (
     <li className="nav-item">
       <NavLink
-        to={props.to}
+        to={to}
         className={({ isActive }) =>
-          `nav-link ${isActive ? "active text-primary fw-semibold" : ""}`
+          "nav-link d-flex align-items-center gap-2 px-3 py-2 rounded-3 " +
+          (isActive ? "bg-primary text-white" : "text-body-secondary")
         }
       >
-        {props.nav}
+        {icon && <i className={`bi ${icon}`}></i>}
+        <span>{nav}</span>
       </NavLink>
     </li>
   );

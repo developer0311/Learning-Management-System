@@ -1,11 +1,11 @@
 import React from "react";
 
-function Home() {
+function Lessons() {
   return (
     <main className="container py-5">
-      <p>Home</p>
+      <p>Lessons</p>
     </main>
   );
 }
 
-export default Home;
+export default Lessons;

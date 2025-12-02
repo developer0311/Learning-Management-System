@@ -92,44 +92,144 @@ section {
   align-items: center;
 }
 
-main{
+/* main{
   min-height: calc(100vh - 72px - 193px);
   padding: 20px;
-}
+} */
 
 section {
   width: 80vw;
 }
 
 
-/* ------------------ HOME ------------------ */
+/* ------------------ SIDEBAR ------------------ */
 
-.home .carousel-inner {
-  margin: auto;
-  width: 80%;
-  border-radius: 20px;
+/* default: hidden off-canvas on mobile */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100vh;
+  z-index: 1000;
+  transition: all 0.35s ease-in-out;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+/* visible when toggled */
+.sidebar.show {
+  left: 0;
+}
+
+/* on md+ always visible, fixed on the left */
+@media (min-width: 768px) {
+  .sidebar {
+    left: 0;
+  }
+}
+
+/* ------------------ APP ------------------ */
+
+/* base background similar to design */
+.app-root {
+  background: #f5f6fb;
+}
+
+/* main area shifts right on desktop so it doesn't go under the fixed sidebar */
+.app-main {
+  width: calc(100vw- 260px);
+  padding-top: 1.5rem;
+}
+
+/* 260px = sidebar width */
+@media (min-width: 768px) {
+  .app-main {
+    margin-left: 260px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
 }
 
 
-.card{
-  transition: all 0.3s ease-in-out;
-}
-.card:hover{
-  box-shadow: 0px 0px 10px 1px #000;
+/* ------------------ DASHBOARD ------------------ */
+
+.dashboard-page {
+  min-height: 100%;
 }
 
-.card .card-img img {
-  max-width: 100%;
-  height: 200px;
-  object-fit: contain;
-  border-radius: 10px;
+.dashboard-inner {
+  max-width: 1200px;
 }
+
+/* cards */
+.dashboard-card {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+}
+
+/* hero card */
+.hero-card {
+  background: linear-gradient(135deg, #804dff, #b44dff);
+  color: #fff;
+}
+
+/* small text utilities */
+.extra-small {
+  font-size: 0.78rem;
+}
+
+/* Avatar circle for mentors */
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e5e7ff;
+  color: #4b4b7a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fake bars for progress chart */
+.chart-bars .chart-bar {
+  flex: 1;
+  margin: 0 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #a66bff, #6c5ce7);
+}
+
+/* Hover for mentor items */
+.mentor-item:hover {
+  background-color: #f4f2ff;
+}
+
+/* Make images rounded nicely */
+.card-img-top {
+  border-radius: 1rem 1rem 0 0 !important;
+}
+
+/* Smaller progress bar height */
+.progress.progress-sm {
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.progress.progress-sm .progress-bar {
+  background-color: #fff;
+  border-radius: 999px;
+}
+
 
 
 /* ------------------ CARD ------------------ */
 
 .card{
-  width: 18rem;
+  width: 15rem;
 }
 
 /* ------------------ PROFILE ------------------ */
