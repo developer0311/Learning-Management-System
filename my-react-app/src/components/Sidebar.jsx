@@ -59,7 +59,7 @@ function Sidebar() {
         {/* OVERVIEW */}
         <span className="text-uppercase text-muted small mb-2">Overview</span>
         <ul className="nav nav-pills flex-column mb-4 gap-1">
-          <NavItem to="/dashboard" nav="Dashboard" icon="bx bx-tachometer" />
+          <NavItem to="/" nav="Dashboard" icon="bx bx-tachometer" />
           <NavItem to="/courses" nav="Courses" icon="bx bx-envelope" />
           <NavItem to="/lessons" nav="Lessons" icon="bx bx-play-circle" />
           <NavItem to="/assignments" nav="Assignments" icon="bx bx-task" />

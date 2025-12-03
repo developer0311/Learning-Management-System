@@ -15,7 +15,7 @@ function Footer() {
         {/* Right: simple footer links */}
         <ul className="nav justify-content-center">
           <li className="nav-item">
-            <Link to="/dashboard" className="nav-link px-2 text-body-secondary small">
+            <Link to="/" className="nav-link px-2 text-body-secondary small">
               Dashboard
             </Link>
           </li>

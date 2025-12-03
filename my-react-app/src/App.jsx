@@ -34,7 +34,7 @@ function AppContent() {
         <div className="app-main d-flex flex-column min-vh-100">
           <main className="flex-grow-1">
             <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/assignments" element={<Assignments />} />
               <Route path="/lessons" element={<Lessons />} />
