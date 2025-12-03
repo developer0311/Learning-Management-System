@@ -29,7 +29,7 @@ function Card({
   return (
     <Link
       to={`/courses/${page_source}`}
-      className="card course-card h-100 text-decoration-none border-0 d-flex flex-column"
+      className="card course-card h-100 text-decoration-none border-0 d-flex flex-column w-100"
     >
       {/* Image */}
       <div className="position-relative overflow-hidden">
@@ -53,7 +53,7 @@ function Card({
 
         {description && (
           <p className="card-text text-muted extra-small mb-2">
-            {description.slice(0, 50)}...
+            {description.slice(0, 25)}...
           </p>
         )}
 

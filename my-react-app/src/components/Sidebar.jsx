@@ -13,7 +13,7 @@ function Sidebar() {
       {/* Hamburger button (mobile only) */}
       <button
         type="button"
-        className="btn btn-light border d-md-none position-fixed top-0 start-0 m-2 z-3"
+        className="btn btn-light border d-900-flex position-fixed top-0 start-0 m-2 z-3"
         onClick={toggleSidebar}
       >
         <i className='bx bx-menu-alt-left' ></i>
@@ -27,7 +27,7 @@ function Sidebar() {
         style={{ width: "260px" }}
       >
         {/* Close button for mobile */}
-        <div className="d-flex d-md-none justify-content-end mb-2">
+        <div className="d-flex d-900-flex justify-content-end mb-2">
           <button
             type="button"
             className="btn btn-sm btn-outline-secondary"

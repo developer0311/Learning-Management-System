@@ -9,7 +9,7 @@ import Courses from "./views/Courses";
 import Assignments from "./views/Assignments";
 import Lessons from "./views/Lessons";
 // import MyCourses from "./views/MyCourses";
-// import CourseDetails from "./views/CourseDetails";
+import CourseDetails from "./views/CourseDetails";
 import Profile from "./views/Profile";
 import PageLoader from "./components/PageLoader";
 
@@ -36,6 +36,8 @@ function AppContent() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/:id" element={<CourseDetails />} /> 
+
               <Route path="/assignments" element={<Assignments />} />
               <Route path="/lessons" element={<Lessons />} />
               {/* <Route path="/courses/:id" element={<CourseDetails />} />  */}

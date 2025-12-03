@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 
 
+
 import "../public/css/index.css";
 import "../public/css/media.css";
 import App from "./App.jsx";
