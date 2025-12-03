@@ -51,7 +51,7 @@ function CourseSection({ title, courses }) {
 
   return (
     <section className="mb-5 position-relative w-100">
-      <h4 className="fw-semibold mb-5">{title} Courses</h4>
+      <h4 className="fw-semibold mb-5">{title? title + " Courses": ""}</h4>
 
       {/* Left Button */}
       {canScrollLeft && (

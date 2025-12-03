@@ -4,6 +4,8 @@ import coursesData from "../../coursesData";
 import Card from "../components/Card";
 import LearningChart from "../components/LearningChart";
 import cardImage from "/images/card_image.png"; 
+import CourseSection from "../components/CourseSection";
+
 
 // ---------------- Data ----------------
 
@@ -88,26 +90,7 @@ function Dashboard() {
                 <button className="btn btn-link btn-sm p-0">See All</button>
               </div>
 
-              <div className="row g-4">
-                {coursesData.slice(0, 6).map((course) => (
-                  <div
-                    key={course.id}
-                    className="col-12 col-sm-6 col-md-4 col-lg-4 d-flex justify-content-center"
-                  >
-                    <Card
-                      page_source={course.id}
-                      title={course.title}
-                      text={course.description}
-                      tag={course.tag}
-                      author={course.author}
-                      rating={course.rating}
-                      level={course.level}
-                      img_source={cardImage}
-                      img_alt={course.title}
-                    />
-                  </div>
-                ))}
-              </div>
+            <CourseSection title="" courses={coursesData.slice(0, 6)} />
             </section>
 
             {/* Mentor table */}
