@@ -1,9 +1,9 @@
 import React from "react";
-// import "./Dashboard.css"; // enable when your styles are ready
+// import "./Dashboard.css"; 
 import coursesData from "../../coursesData";
 import Card from "../components/Card";
 import LearningChart from "../components/LearningChart";
-import cardImage from "/images/card_image.png"; // <-- update path if needed
+import cardImage from "/images/card_image.png"; 
 
 // ---------------- Data ----------------
 
