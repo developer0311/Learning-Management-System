@@ -152,7 +152,7 @@ function Dashboard() {
             <div className="card dashboard-card mb-4 w-100">
               <div className="card-body text-center">
                 <div className="profile-avatar mx-auto mb-3" />
-                <h6 className="fw-semibold mb-1">Good Morning Prashant</h6>
+                <h6 className="fw-semibold mb-1">Good Morning Diprati</h6>
                 <p className="extra-small text-muted mb-3">
                   Continue your journey and achieve your target
                 </p>
