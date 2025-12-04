@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Card from "../components/Card";
-import coursesData from "../../coursesData";
+import coursesData from "../../data/coursesData";
 import CourseSection from "../components/CourseSection";
 
 function Profile() {

@@ -1,5 +1,5 @@
 import React from "react";
-import lessonsData from "../../lessonData";
+import lessonsData from "../../data/lessonData";
 
 
 function Lessons() {
@@ -20,7 +20,7 @@ function Lessons() {
                 {/* 👇 this block will stay at the bottom */}
                 <div className="mt-auto">
                   <p className="text-secondary mb-2">
-                    <i className="bi bi-clock me-2"></i>
+                    <i className="bx bxs-stopwatch me-2"></i>
                     {lesson.duration}
                   </p>
                   <button className="btn btn-primary w-100">

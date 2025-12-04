@@ -1,9 +1,6 @@
 import React from "react";
-// import "./Dashboard.css"; 
-import coursesData from "../../coursesData";
-import Card from "../components/Card";
+import coursesData from "../../data/coursesData";
 import LearningChart from "../components/LearningChart";
-import cardImage from "/images/card_image.png"; 
 import CourseSection from "../components/CourseSection";
 
 

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import coursesData from "../../coursesData";
+import coursesData from "../../data/coursesData";
 import CourseSection from "../components/CourseSection";
 
 

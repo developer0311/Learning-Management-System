@@ -1,6 +1,6 @@
 // src/pages/Assignments.jsx
 import React, { useMemo, useState } from "react";
-import assignmentsData from "../../assignmentsData";
+import assignmentsData from "../../data/assignmentsData";
 
 function getDaysLeft(dueDateStr) {
   const today = new Date();

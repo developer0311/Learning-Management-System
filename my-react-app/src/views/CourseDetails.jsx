@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import coursesData from "../../coursesData";
+import coursesData from "../../data/coursesData";
 
 function CourseDetails() {
   const { id } = useParams(); // get course ID from URL
