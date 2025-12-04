@@ -18,11 +18,11 @@ function AppContent() {
   const [loading, setLoading] = useState(false);
 
   // Trigger loader when route changes
-  // useEffect(() => {
-  //   setLoading(true);
-  //   const timer = setTimeout(() => setLoading(false), 800); // Adjust time if needed
-  //   return () => clearTimeout(timer);
-  // }, [location.pathname]);
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 800); // Adjust time if needed
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   return (
     <>
