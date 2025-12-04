@@ -14,9 +14,10 @@ function Sidebar() {
       <button
         type="button"
         className="btn btn-light border d-900-flex position-fixed top-0 start-0 m-2 z-3"
+        style={{ fontSize: "20px", }}
         onClick={toggleSidebar}
       >
-        <i className='bx bx-menu-alt-left' ></i>
+        <i className="bx bx-menu-alt-left"></i>
       </button>
 
       {/* Sidebar */}
@@ -30,10 +31,11 @@ function Sidebar() {
         <div className="d-flex d-900-flex justify-content-end mb-2">
           <button
             type="button"
-            className="btn btn-sm btn-outline-secondary"
+            className="btn"
+            style={{ fontSize: "20px", }}
             onClick={toggleSidebar}
           >
-            <i className='bx bx-x'></i>
+            <i className="bx bx-x"></i>
           </button>
         </div>
 
@@ -69,7 +71,11 @@ function Sidebar() {
         {/* FRIENDS */}
         <span className="text-uppercase text-muted small mb-2">Friends</span>
         <ul className="nav flex-column mb-4 gap-1">
-          <NavItem to="/friends/prashant" nav="Prashant" icon="bi-person-circle" />
+          <NavItem
+            to="/friends/prashant"
+            nav="Prashant"
+            icon="bi-person-circle"
+          />
           <NavItem to="/friends/ravi" nav="Ravi" icon="bi-person-circle" />
         </ul>
 

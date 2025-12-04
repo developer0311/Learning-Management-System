@@ -59,9 +59,9 @@ function Dashboard() {
                   <p className="badge rounded-pill text-bg-light text-uppercase small mb-2">
                     Online Course
                   </p>
-                  <h4 className="fw-semibold mb-3">
+                  <h3 className="fw-semibold mb-3">
                     Sharpen Your Skills With Professional Online Courses
-                  </h4>
+                  </h3>
                   <button className="btn btn-light btn-sm rounded-pill px-3">
                     Join Now
                   </button>

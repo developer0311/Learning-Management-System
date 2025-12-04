@@ -135,7 +135,7 @@ section {
 /* Hide toggle button above 900px */
 @media (min-width: 901px) {
   .d-900-none {
-    display: flex !important;
+    display: block !important;
   }
   .d-900-flex {
     display: none !important;
@@ -172,6 +172,11 @@ section {
   }
 }
 
+@media (max-width: 900px) {
+  main{
+    padding: 20px 10px 0px 10px;
+  }
+}
 
 /* ------------------ DASHBOARD ------------------ */
 
@@ -351,7 +356,7 @@ section:hover .btn.rounded-circle {
 
 
 
-/* ------------------ PROFILE ------------------ */
+/* ------------------ ASSIGNMENTS ------------------ */
 
 /* summary cards */
 .assignment-summary-card {
@@ -434,6 +439,12 @@ section:hover .btn.rounded-circle {
 
 
 /* ------------------ PROFILE ------------------ */
+
+/*@media only screen and (max-width: 750){
+  .enrolled-courses{
+    padding: 0;
+  }
+} */
 
 .enrolled-courses h3 {
   letter-spacing: 0.5px;

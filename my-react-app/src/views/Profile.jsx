@@ -35,7 +35,7 @@ function Profile() {
       </section>
 
       {/* Enrolled Courses */}
-      <section className="enrolled-courses w-100 px-5">
+      <section className="enrolled-courses w-100 px-3">
         <h3 className="fw-bold text-dark mb-4 text-center">
           My Enrolled Courses
         </h3>

@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import coursesData from "../../coursesData";
 import Card from "../components/Card";
 import cardImage from "/images/card_image.png"; 
 
@@ -56,7 +55,7 @@ function CourseSection({ title, courses }) {
       {/* Left Button */}
       {canScrollLeft && (
         <button
-          className="btn btn-light btn-lg rounded-circle shadow position-absolute top-50 start-0 translate-middle-y z-2"
+          className="btn btn-light btn-lg d-900-none rounded-circle shadow position-absolute top-50 start-0 translate-middle-y z-2"
           style={{ transform: "translate(-50%, -50%)" }}
           onClick={() => handleScroll(-1)}
         >
@@ -67,7 +66,7 @@ function CourseSection({ title, courses }) {
       {/* Right Button */}
       {canScrollRight && (
         <button
-          className="btn btn-light btn-lg rounded-circle shadow position-absolute top-50 end-0 translate-middle-y z-2"
+          className="btn btn-light btn-lg d-900-none rounded-circle shadow position-absolute top-50 end-0 translate-middle-y z-2"
           style={{ transform: "translate(50%, -50%)" }}
           onClick={() => handleScroll(1)}
         >
