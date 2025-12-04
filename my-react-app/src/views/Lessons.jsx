@@ -10,7 +10,7 @@ function Lessons() {
       <div className="row g-4">
         {lessonsData.map((lesson) => (
           <div key={lesson.id} className="col-md-6 col-lg-4">
-            <div className="card shadow-sm h-100 border-0">
+            <div className="card shadow-sm h-100 border-0 w-100">
               {/* 👇 make card-body a flex column */}
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title fw-bold text-dark">{lesson.title}</h5>

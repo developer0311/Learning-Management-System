@@ -68,7 +68,8 @@ body::-webkit-scrollbar {
 }
 
 h1 {
-  font-family: "Sacramento", cursive;
+  /* font-family: "Sacramento", cursive; */
+  font-family: "Dancing Script", cursive;
 }
 
 h3 {
@@ -93,8 +94,8 @@ section {
 }
 
 /* main{
-  min-height: calc(100vh - 72px - 193px);
-  padding: 20px;
+  min-height: calc(100vh - 66px);
+  padding: 20px !important;
 } */
 
 section {
