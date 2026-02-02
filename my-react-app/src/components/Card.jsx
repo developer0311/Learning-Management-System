@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 function Card({
   page_source, // id
   title,
-  text, // description
-  tag,
-  author,
+  description, // description
+  tag, // category
+  author, // instructor
   rating,
   level,
   price,
@@ -14,17 +14,23 @@ function Card({
   img_source,
   img_alt,
 }) {
-  const description =
-    text && text.length > 80 ? text.slice(0, 80) + "..." : text;
+  // convert API string values to numbers safely
+  const numericPrice = price ? Number(price) : null;
+  const numericRating = rating ? Number(rating) : null;
+  const numericDiscount =
+    typeof discount_percent === "number"
+      ? discount_percent
+      : Number(discount_percent || 0);
 
-  const hasPrice = typeof price === "number";
+
+  const hasPrice = typeof numericPrice === "number" && !isNaN(numericPrice);
   const hasDiscount =
-    typeof discount_percent === "number" && discount_percent > 0;
+    typeof numericDiscount === "number" && numericDiscount > 0;
 
   const discountedPrice =
     hasPrice && hasDiscount
-      ? Math.round(price - (price * discount_percent) / 100)
-      : price;
+      ? Math.round(numericPrice - (numericPrice * numericDiscount) / 100)
+      : numericPrice;
 
   return (
     <Link
@@ -34,10 +40,11 @@ function Card({
       {/* Image */}
       <div className="position-relative overflow-hidden">
         <img
-          src={img_source}
+          src={img_source || "/images/card_image.png"}
           className="card-img-top course-card-img"
           alt={img_alt || title}
         />
+
         {tag && (
           <span className="badge bg-light text-dark position-absolute top-0 start-0 m-2 extra-small rounded-pill px-3 py-1 shadow-sm">
             {tag}
@@ -52,9 +59,7 @@ function Card({
 
         {/* Description */}
         {description && (
-          <p className="card-text text-muted extra-small mb-2">
-            {description.slice(0, 25)}...
-          </p>
+          <p className="card-text text-muted extra-small mb-2">{description}</p>
         )}
 
         {/* Author */}
@@ -64,15 +69,16 @@ function Card({
           </p>
         )}
 
-        {/* 👇 everything below this line stays at the bottom */}
+        {/* Bottom section */}
         <div className="mt-auto">
           {/* Rating + Level */}
           <div className="d-flex justify-content-between align-items-center mb-2">
-            {rating && (
+            {numericRating !== null && !isNaN(numericRating) && (
               <span className="extra-small text-warning fw-semibold">
-                ★ {rating.toFixed(1)}
+                ★ {numericRating.toFixed(1)}
               </span>
             )}
+
             {level && (
               <span className="badge bg-primary-subtle text-primary extra-small rounded-pill">
                 {level}
@@ -81,24 +87,23 @@ function Card({
           </div>
 
           {/* Price row */}
-          {(hasPrice || hasDiscount) && (
+          {hasPrice && (
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                {hasPrice && (
-                  <span className="fw-semibold text-dark">
-                    ₹{discountedPrice}
-                  </span>
-                )}
-                {hasPrice && hasDiscount && (
+                <span className="fw-semibold text-dark">
+                  ₹{discountedPrice}
+                </span>
+
+                {hasDiscount && (
                   <span className="text-muted extra-small ms-2 text-decoration-line-through">
-                    ₹{price}
+                    ₹{numericPrice}
                   </span>
                 )}
               </div>
 
               {hasDiscount && (
                 <span className="badge bg-danger-subtle text-danger extra-small rounded-pill px-2">
-                  -{discount_percent}%
+                  -{numericDiscount}%
                 </span>
               )}
             </div>

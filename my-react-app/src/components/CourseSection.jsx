@@ -1,103 +1,109 @@
 import React, { useRef, useState, useEffect } from "react";
 import Card from "../components/Card";
-import cardImage from "/images/card_image.png"; 
-
 
 function CourseSection({ title, courses }) {
   const sliderRef = useRef(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [cardWidth, setCardWidth] = useState(280); // default
 
-  const updateScrollButtons = () => {
+  // Dynamically calculate card width based on container size
+  const calculateCardWidth = () => {
     const container = sliderRef.current;
     if (!container) return;
 
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-    setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 5);
+    const containerWidth = container.clientWidth;
+    console.log(containerWidth)
+
+    let visibleCards = 4; // default (dashboard sweet spot)
+
+    if (containerWidth >= 1400) visibleCards = 5;      // courses page large
+    else if (containerWidth >= 1100) visibleCards = 4;
+    else if (containerWidth >= 800) visibleCards = 3;
+    else if (containerWidth >= 500) visibleCards = 3;
+    else if (containerWidth >= 400) visibleCards = 2;
+    else visibleCards = 1;
+
+    const gap = 16; // px (matches CSS gap)
+    const totalGap = gap * (visibleCards - 1);
+
+    setCardWidth((containerWidth - totalGap) / visibleCards);
   };
 
   const handleScroll = (direction) => {
     const container = sliderRef.current;
     if (!container) return;
 
-    const cardEl = container.querySelector(".course-slide");
-    if (!cardEl) return;
-
-    const cardWidth = cardEl.getBoundingClientRect().width;
-    const visibleCount = window.innerWidth < 768 ? 1 : 1;
-    const scrollAmount = cardWidth * visibleCount * direction;
-
     container.scrollBy({
-      left: scrollAmount,
+      left: direction * (cardWidth + 16),
       behavior: "smooth",
     });
-
-    setTimeout(updateScrollButtons, 500);
   };
 
   useEffect(() => {
-    const container = sliderRef.current;
-    if (!container) return;
+    calculateCardWidth();
 
-    container.addEventListener("scroll", updateScrollButtons);
-    updateScrollButtons();
+    const resizeObserver = new ResizeObserver(calculateCardWidth);
+    if (sliderRef.current) {
+      resizeObserver.observe(sliderRef.current);
+    }
 
-    return () => container.removeEventListener("scroll", updateScrollButtons);
+    window.addEventListener("resize", calculateCardWidth);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", calculateCardWidth);
+    };
   }, []);
 
   if (!courses.length) return null;
 
   return (
-    <section className="mb-5 position-relative w-100">
-      <h4 className="fw-semibold mb-5">{title? title + " Courses": ""}</h4>
+    <div className="mb-5 position-relative w-100">
+      {title && <h4 className="fw-semibold mb-4">{title} Courses</h4>}
 
-      {/* Left Button */}
-      {canScrollLeft && (
-        <button
-          className="btn btn-light btn-lg d-900-none rounded-circle shadow position-absolute top-50 start-0 translate-middle-y z-2"
-          style={{ transform: "translate(-50%, -50%)" }}
-          onClick={() => handleScroll(-1)}
-        >
-          <i className="bx bx-chevron-left" />
-        </button>
-      )}
+      {/* Left Arrow */}
+      <button
+        className="btn btn-light rounded-circle shadow position-absolute top-50 start-0 translate-middle-y z-2"
+        onClick={() => handleScroll(-1)}
+      >
+        <i className="bx bx-chevron-left" />
+      </button>
 
-      {/* Right Button */}
-      {canScrollRight && (
-        <button
-          className="btn btn-light btn-lg d-900-none rounded-circle shadow position-absolute top-50 end-0 translate-middle-y z-2"
-          style={{ transform: "translate(50%, -50%)" }}
-          onClick={() => handleScroll(1)}
-        >
-          <i className="bx bx-chevron-right" />
-        </button>
-      )}
+      {/* Right Arrow */}
+      <button
+        className="btn btn-light rounded-circle shadow position-absolute top-50 end-0 translate-middle-y z-2"
+        onClick={() => handleScroll(1)}
+      >
+        <i className="bx bx-chevron-right" />
+      </button>
 
       <div
         ref={sliderRef}
-        className="courses-slider d-flex flex-nowrap overflow-auto pb-2 w-100"
+        className="courses-slider d-flex overflow-auto"
       >
         {courses.map((course) => (
-          <div key={course.id} className="course-slide pe-3">
+          <div
+            key={course.id}
+            className="course-slide"
+            style={{ width: `${cardWidth}px`, alignItems: "stretch" }}
+          >
             <Card
               page_source={course.id}
               title={course.title}
-              text={course.description}
+              description={course.description}
               tag={course.category}
               author={course.instructor}
               rating={course.rating}
               level={course.level}
               price={course.price}
               discount_percent={course.discount_percent}
-              img_source={cardImage}
+              img_source={course.banner_url}
               img_alt={course.title}
             />
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
 
-export default CourseSection
+export default CourseSection;

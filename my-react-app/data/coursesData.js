@@ -1,6 +1,6 @@
 const coursesData = [
   {
-    id: "1",
+    id: "81c8fdbd-728a-47fc-9be1-f45223e16dbe",
     title: "React for Beginners",
     description: "Learn the fundamentals of React.js and build interactive UIs from scratch.",
     duration: "6 weeks",

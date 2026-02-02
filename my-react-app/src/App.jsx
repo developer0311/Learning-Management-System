@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-// import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/protected_routes/ProtectedRoute";
+
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import Login from "./views/Login"
+import Register from "./views/Register"
 import Dashboard from "./views/Dashboard";
 import Courses from "./views/Courses";
 import Assignments from "./views/Assignments";
@@ -26,7 +29,7 @@ function AppContent() {
 
   return (
     <>
-      {loading && <PageLoader />}
+      {/* {loading && <PageLoader />} */}
       <div className="app-root bg-light">
         <Sidebar />
 
@@ -35,13 +38,18 @@ function AppContent() {
           <main className="flex-grow-1">
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/courses/:id" element={<CourseDetails />} /> 
+              {/* PROTECTED ROUTES */}
+              <Route element={<ProtectedRoute />}>
 
               <Route path="/assignments" element={<Assignments />} />
               <Route path="/lessons" element={<Lessons />} />
               {/* <Route path="/courses/:id" element={<CourseDetails />} />  */}
               <Route path="/profile" element={<Profile />} />
+              </Route>
             </Routes>
         <Footer />
           </main>

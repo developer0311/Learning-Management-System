@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavItem from "./NavItem";
-// import "./Sidebar.css"; // we'll add animation styles here
+import authServices from "../services/auth.service";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const isLoggedIn = !!localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
+
+  const handleLogout = (e) => {
+    e.preventDefault();       // stop normal navigation
+    authServices.logout();    // run logout logic
+    navigate("/login");       // optional, already in logout but safe
+  };
 
   return (
     <>
@@ -14,13 +22,12 @@ function Sidebar() {
       <button
         type="button"
         className="btn btn-light border d-900-flex position-fixed top-0 start-0 m-2 z-3"
-        style={{ fontSize: "20px", }}
+        style={{ fontSize: "20px" }}
         onClick={toggleSidebar}
       >
         <i className="bx bx-menu-alt-left"></i>
       </button>
 
-      {/* Sidebar */}
       <aside
         className={`sidebar bg-white border-end shadow-sm min-vh-100 p-3 ${
           isOpen ? "show" : ""
@@ -32,7 +39,7 @@ function Sidebar() {
           <button
             type="button"
             className="btn"
-            style={{ fontSize: "20px", }}
+            style={{ fontSize: "20px" }}
             onClick={toggleSidebar}
           >
             <i className="bx bx-x"></i>
@@ -72,21 +79,52 @@ function Sidebar() {
         <span className="text-uppercase text-muted small mb-2">Friends</span>
         <ul className="nav flex-column mb-4 gap-1">
           <NavItem
-            to="/friends/prashant"
+            to={isLoggedIn ? "/friends/prashant" : "/login"}
             nav="Prashant"
-            icon="bi-person-circle"
+            icon="person-circle"
           />
-          <NavItem to="/friends/ravi" nav="Ravi" icon="bi-person-circle" />
+          <NavItem
+            to={isLoggedIn ? "/friends/ravi" : "/login"}
+            nav="Ravi"
+            icon="person-circle"
+          />
         </ul>
 
-        {/* Bottom: Settings / Logout */}
+        {!isLoggedIn && (
+          <div className="small text-muted mb-3">
+            Login to view and follow friends
+          </div>
+        )}
+
+        {/* Bottom: Settings / Logout or Login/Register */}
         <div className="mt-auto">
           <span className="text-uppercase text-muted small mb-2 d-block">
             Settings
           </span>
+
           <ul className="nav flex-column gap-1">
-            <NavItem to="/settings" nav="Settings" icon="bi-gear" />
-            <NavItem to="/logout" nav="Logout" icon="bi-box-arrow-right" />
+            {isLoggedIn ? (
+              <>
+                <NavItem to="/settings" nav="Settings" icon="gear" />
+
+                {/* Logout item with same design as NavItem */}
+                <li className="nav-item">
+                  <a
+                    href="/logout"
+                    onClick={handleLogout}
+                    className="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded-3 text-body-secondary"
+                  >
+                    <i className="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <NavItem to="/login" nav="Login" icon="box-arrow-in-right" />
+                <NavItem to="/register" nav="Register" icon="person-plus" />
+              </>
+            )}
           </ul>
         </div>
       </aside>
