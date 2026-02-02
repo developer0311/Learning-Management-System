@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavItem from "./NavItem";
-import authServices from "../services/auth.service";
+import authServices from "../services/auth.service.js";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
