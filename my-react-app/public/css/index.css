@@ -275,6 +275,7 @@ section {
 
 /* IMPORTANT: JS controls width */
 .course-slide {
+  flex-shrink: 0;
   flex: 0 0 auto;
 }
 
