@@ -82,7 +82,7 @@ function CourseSection({ title, courses }) {
             <Card
               page_source={course.id}
               title={course.title}
-              description={course.description}
+              description={course.description.slice(0, 25) + "..."}
               tag={course.category}
               author={course.instructor}
               rating={course.rating}
