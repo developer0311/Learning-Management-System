@@ -96,57 +96,82 @@ function CourseDetails() {
   return (
     <div className="w-100">
       {/* ================= HERO ================= */}
-      <div className="bg-dark text-light p-5">
+      <div className="p-sm-0 p-md-5">
         <div className="container-xxl">
           <div className="row g-5 align-items-center">
-            <div className="col-lg-7">
+            {!isEnrolled && (
+              <div className="col-md-12 col-lg-12 col-xl-5">
+                <div className="shadow border-0">
+                  <img
+                    src={course.banner_url || "/images/card_image.png"}
+                    alt={course.title}
+                    className="img-fluid rounded"
+                  />
+                </div>
+              </div>
+            )}
+            <div className="col-md-12 col-lg-12 col-xl-7">
               <span className="badge bg-primary mb-2">{course.category}</span>
 
-              <h1 className="fw-bold mb-3">{course.title}</h1>
+              <h1 className="fw-bold text-secondary mb-3">{course.title}</h1>
 
               <p className="text-light-emphasis fs-5">{course.description}</p>
 
               <div className="d-flex flex-wrap gap-3 my-3">
-                <span className="badge bg-secondary">{course.level}</span>
-                <span className="badge bg-secondary">⏱ {course.duration}</span>
-                <span className="badge bg-secondary">⭐ {course.rating}</span>
+                <span className="badge bg-success py-2 px-3">
+                  {course.level}
+                </span>
+                <span className="badge bg-warning py-2 px-3">
+                  ⏱ {course.duration}
+                </span>
+                <span className="badge bg-info py-2 px-3">
+                  ⭐ {course.rating}
+                </span>
               </div>
 
               <p className="small text-light-emphasis">
                 Created by <strong>{course.instructor_name}</strong>
               </p>
-            </div>
 
-            {!isEnrolled && (
-              <div className="col-lg-5">
-                <div className="card shadow border-0">
-                  <img
-                    src={course.banner_url || "/images/card_image.png"}
-                    alt={course.title}
-                    className="img-fluid rounded-top"
-                  />
+              {!isEnrolled && (
+                <div className="card-body">
+                  <div className="price-section mb-3">
+                    {/* Discount badge */}
+                    {course.discount_percent > 0 && (
+                      <span className="badge bg-danger mb-2">
+                        {course.discount_percent}% OFF
+                      </span>
+                    )}
 
-                  <div className="card-body">
-                    <h4 className="fw-bold mb-2">
-                      ₹{discountedPrice}
-                      {course.discount_percent > 0 && (
-                        <span className="text-muted text-decoration-line-through fs-6 ms-2">
+                    {/* Final Price */}
+                    <h3 className="fw-bold text-dark mb-1">
+                      ₹{course.actual_price}
+                    </h3>
+
+                    {/* Original price + savings */}
+                    {course.discount_percent > 0 && (
+                      <div className="d-flex align-items-center gap-2">
+                        <span className="text-muted text-decoration-line-through">
                           ₹{course.price}
                         </span>
-                      )}
-                    </h4>
+                        <span className="text-success small fw-semibold">
+                          Save ₹{course.price - course.actual_price}
+                        </span>
+                      </div>
+                    )}
 
-                    <button className="btn btn-primary w-100 mb-2">
-                      Enroll Now
-                    </button>
-
-                    <p className="text-muted small mb-0">
-                      Full lifetime access
+                    {/* Micro text */}
+                    <p className="text-muted small mt-2 mb-0">
+                      One-time payment • Lifetime access
                     </p>
                   </div>
+                  <button className="btn btn-primary w-100 mb-2">
+                    Enroll Now
+                  </button>
+
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

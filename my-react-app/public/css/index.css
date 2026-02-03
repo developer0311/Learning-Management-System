@@ -78,6 +78,7 @@ h3 {
 
 p,
 span,
+li,
 label,
 input,
 textarea,
@@ -416,6 +417,16 @@ section {
 }
 
 
+/* ------------------ COURSE DETAILS PAGE ------------------ */
+
+.price-section h3 {
+  letter-spacing: -0.5px;
+}
+
+.price-section .badge {
+  font-size: 0.7rem;
+  padding: 0.35em 0.6em;
+}
 
 
 /* ------------------ ASSIGNMENTS ------------------ */
